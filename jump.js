@@ -12,21 +12,25 @@ function keyPressed() {
         person.applyForce(jump);
     }
 }
+//
+// function draw() {
+//   background(51);
+//
+//   translate(-person.pos.x+50, 0);
+//
+//
+// }
 
-function draw() {
-  background(51);
-  
-  translate(-person.pos.x+50, 0);
-  
+function createCharacter() {
+  person = new Person();
   var gravity = createVector(0, 0.1);
   person.applyForce(gravity);
 
   person.update();
   person.edges();
   person.display();
-  
-  
-  
+
   fill(255, 0, 100);
   rect(400, height-50, 50, 50);
+  return person;
 }
