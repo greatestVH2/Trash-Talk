@@ -2,13 +2,14 @@ var bg, sc;
 var y = 0;
 var gb;
 var person;
+var rc;
 
 function preload() {
   bg = loadImage("city-background.jpg");
   // Monospace =  loadFont(monospace);
   plasticBottle = loadImage("plastic-water-bottle.jpg");
   sc = loadImage("girl.png");
-
+  rc = loadImage("Recycling_Plant.png")
 }
 
 
@@ -31,6 +32,7 @@ function setup() {
   offset = 0;
   createCanvas(839, 350);
   person = new Person();
+
 }
 
 function draw() {
@@ -38,6 +40,9 @@ function draw() {
     drawBackground(offset--);
     if (offset===-width){
         offset=0;
+    }
+    if (millis()>100000){
+      image(rc, 400, height/2, rc.width/4, rc.height/4);
     }
     dis_money();
     translate(-person.pos.x+50, 0);
@@ -61,10 +66,13 @@ function draw() {
 function clear(){
     background ("white");
 }
+function recycling(){
+
+}
 
 function drawBackground(offset){
-    image(bg, offset,-140);
-    image(bg, offset+width,-140);
+    image(bg, offset, -140);
+    image(bg, offset+width, -140);
 }
 
 function dis_money() {
