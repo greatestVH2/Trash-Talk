@@ -2,8 +2,9 @@ var bg, sc;
 var y = 0;
 var gb;
 var person;
-var logo;
 
+var logo;
+var jumps = 0;
 
 function preload() {
   logo = loadImage("logo.png");
@@ -15,22 +16,19 @@ function preload() {
 }
 
 function keyPressed() {
-    if (key === " ") {
-        var jump = createVector(0, -6);
+  if ((key === " ") && (jumps<2) && (person.pos.y > 260)){
+      jumps+=1;
+        var jump = createVector(0, -4);
         person.applyForce(jump);
-    }
+
+
+  }
+    console.log(jumps);
 }
 
-// function draw() {
-//   background(51);
-//
-//   translate(-person.pos.x+50, 0);
-//
-//
-// }
 
 function setup() {
-  offset = 0;
+  offset =0;
   createCanvas(839, 350);
   person = new Person();
 }
@@ -40,8 +38,10 @@ function draw() {
   if(millis()<=4000) {
     image(logo,0,0,845,350);
   } else {
-    drawBackground(offset--);
-    if (offset===-width){
+
+
+    drawBackground(offset-=2);
+    if (offset<=-width){
         offset=0;
     }
 
@@ -51,19 +51,18 @@ function draw() {
     translate(-person.pos.x+50, 0);
     var gravity = createVector(0, 0.1);
     person.applyForce(gravity);
+    if (person.pos.y == 350) {
+      jumps =0;
+    }
 
     person.update();
     person.edges();
     person.display(sc);
-    // loadImage("side-chick.jpg", function(sc){
-    //   person.display(sc);
-    //   image(sc)
-    // })
-
-
 
     fill(255, 0, 100);
     rect(400, height-50, 50, 50);
+    rect(800, height-50, 50, 50);
+    rect(1200, height-50, 50, 50);
   }
 }
 

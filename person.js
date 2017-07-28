@@ -1,6 +1,6 @@
 function Person() {
   this.pos = createVector(50, height-40);
-  this.vel = createVector(1, 0);
+  this.vel = createVector(5, 0);
   this.acc = createVector(0, 0);
 
   this.applyForce = function(force) {
