@@ -1,13 +1,13 @@
-var bg;
+var bg, sc;
 var y = 0;
 var gb;
 var person;
 
 function preload() {
   bg = loadImage("city-background.jpg");
-  Monospace =  loadFont(monospace);
+  // Monospace =  loadFont(monospace);
   plasticBottle = loadImage("plastic-water-bottle.jpg");
-  sc = loadImage("side-chick.jpg");
+  sc = loadImage("girl.png");
 
 }
 
@@ -46,7 +46,11 @@ function draw() {
 
     person.update();
     person.edges();
-    person.display();
+    person.display(sc);
+    // loadImage("side-chick.jpg", function(sc){
+    //   person.display(sc);
+    //   image(sc)
+    // })
 
 
 

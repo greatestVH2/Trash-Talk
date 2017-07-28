@@ -1,8 +1,8 @@
 function Person() {
-  this.pos = createVector(50, height);
+  this.pos = createVector(50, height-40);
   this.vel = createVector(1, 0);
   this.acc = createVector(0, 0);
- 
+
   this.applyForce = function(force) {
     this.acc.add(force);
   }
@@ -13,10 +13,14 @@ function Person() {
     this.acc.set(0, 0);
   }
 
-  this.display = function() {
+
+  this.display = function(img) {
     fill(255);
     stroke(255);
-    rect(this.pos.x, this.pos.y-50, 20,50);
+    //image(img, this.pos.x, this.pos.y);
+
+    image(img, this.pos.x, this.pos.y-60);
+
   }
 
   this.edges = function() {
