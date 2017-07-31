@@ -8,10 +8,18 @@ var logo;
 function preload() {
   logo = loadImage("logo.png");
   bg = loadImage("city-background.jpg");
+  instructions = loadImage("instructions.png");
   // Monospace =  loadFont(monospace);
   plasticBottle = loadImage("plastic-water-bottle.jpg");
   sc = loadImage("girl.png");
 
+}
+
+
+function setup() {
+  offset = 0;
+  createCanvas(839, 350);
+  person = new Person();
 }
 
 function keyPressed() {
@@ -21,32 +29,18 @@ function keyPressed() {
     }
 }
 
-// function draw() {
-//   background(51);
-//
-//   translate(-person.pos.x+50, 0);
-//
-//
-// }
-
-function setup() {
-  offset = 0;
-  createCanvas(839, 350);
-  person = new Person();
-}
-
 function draw() {
   clear();
-  if(millis()<=4000) {
-    image(logo,0,0,845,350);
+  if(millis()<=3000) {
+    image(logo,0,0,845,350)
+  }
+  else if (millis()<=6000) {
+    image(instructions,0,0,845,350);
   } else {
     drawBackground(offset--);
     if (offset===-width){
         offset=0;
-    }
-
-
-
+      }
     dis_money();
     translate(-person.pos.x+50, 0);
     var gravity = createVector(0, 0.1);
@@ -55,12 +49,6 @@ function draw() {
     person.update();
     person.edges();
     person.display(sc);
-    // loadImage("side-chick.jpg", function(sc){
-    //   person.display(sc);
-    //   image(sc)
-    // })
-
-
 
     fill(255, 0, 100);
     rect(400, height-50, 50, 50);
