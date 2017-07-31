@@ -2,9 +2,10 @@ var bg, sc;
 var y = 0;
 var gb;
 var person;
+var rc;
+
 var logo;
 var jumps = 0;
-var obs1, obs2, obs3, obs4, obs5;
 
 function preload() {
   logo = loadImage("logo.png");
@@ -12,12 +13,7 @@ function preload() {
   // Monospace =  loadFont(monospace);
   plasticBottle = loadImage("plastic-water-bottle.jpg");
   sc = loadImage("girl.png");
-  obs1 = loadImage("cat-call1.png")
-  obs2 = loadImage("cat-call2.png")
-  obs3 = loadImage("cat-call3.png")
-  obs4 = loadImage("cat-call4.png")
-  obs5 = loadImage("cat-call5.png")
-
+  rc = loadImage("Recycling_Plant.png")
 }
 
 function keyPressed() {
@@ -36,6 +32,7 @@ function setup() {
   offset =0;
   createCanvas(839, 350);
   person = new Person();
+
 }
 
 function draw() {
@@ -49,7 +46,9 @@ function draw() {
     if (offset<=-width){
         offset=0;
     }
-
+    if (millis()>100000){
+      image(rc, 400, height/2, rc.width/4, rc.height/4);
+    }
     dis_money();
     translate(-person.pos.x+50, 0);
     var gravity = createVector(0, 0.1);
@@ -62,17 +61,23 @@ function draw() {
     person.edges();
     person.display(sc);
 
-    display_obstacles();
+    fill(255, 0, 100);
+    rect(400, height-50, 50, 50);
+    rect(800, height-50, 50, 50);
+    rect(1200, height-50, 50, 50);
   }
 }
 
 function clear(){
     background ("white");
 }
+function recycling(){
+
+}
 
 function drawBackground(offset){
-    image(bg, offset,-140);
-    image(bg, offset+width,-140);
+    image(bg, offset, -140);
+    image(bg, offset+width, -140);
 }
 
 function dis_money() {
@@ -86,10 +91,7 @@ function dis_money() {
     text("$", 238, 8, 637, 30);
 }
 
- function display_obstacles() {
-   var obstacles = [obs1, obs2, obs3, obs4, obs5];
-   obstacles.forEach(function(obs, index){
-     image(obs, 400*(index+1), height-50);
-   })
+ function makeBottle() {
+
 
 }
