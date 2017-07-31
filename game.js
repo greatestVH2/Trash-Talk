@@ -17,12 +17,11 @@ var monospace;
 function preload() {
   logo = loadImage("logo.png");
   bg = loadImage("city-background.jpg");
+  instructions = loadImage("instructions.png");
+  plasticBottle = loadImage("plastic-water-bottle.jpg");
   sc = loadImage("girl.png");
   rc = loadImage("Recycling_Plant.png")
   plasticBottle = loadImage("waterbottle.png");
-
-
-
 }
 
 function keyPressed() {
@@ -45,11 +44,12 @@ function setup() {
 
 function draw() {
   clear();
-  if(millis()<=4000) {
-    image(logo,0,0,845,350);
+  if(millis()<=3000) {
+    image(logo,0,0,845,350)
+  }
+  else if (millis()<=6000) {
+    image(instructions,0,0,845,350);
   } else {
-
-
     drawBackground(offset-=2);
     if (offset<=-width){
         offset=0;
@@ -60,7 +60,6 @@ function draw() {
     dis_money();
     bottleCount();
     disBottle();
-    //bottle_score();
     makeBottle();
     translate(-person.pos.x+50, 0);
     var gravity = createVector(0, 0.1);
