@@ -14,6 +14,9 @@ var money = 0.00;
 var plasticBottle;
 var monospace;
 
+var heart ;
+var eheart;
+var offset;
 
 function preload() {
   logo = loadImage("logo.png");
@@ -26,6 +29,8 @@ function preload() {
   obs3 = loadImage("cat-call3.png");
   obs4 = loadImage("cat-call4.png");
   obs5 = loadImage("cat-call5.png");
+  eheart= loadImage("EmptyHeart23.png")
+  heart = loadImage("heart23.png")
 }
 
 function keyPressed() {
@@ -65,6 +70,7 @@ function draw() {
     disBottle();
     //bottle_score();
     makeBottle();
+    showLives();
     translate(-person.pos.x+50, 0);
     var gravity = createVector(0, 0.1);
     person.applyForce(gravity);
@@ -78,6 +84,41 @@ function draw() {
 
     display_obstacles();
   }
+}
+
+function showLives() {
+  image(heart, 0,0,30,30)
+  image(heart,29,0,30,30)
+  image(heart,58,0,30,30)
+  image(heart,88,0,30,30)
+  image(heart,118,0,30,30)
+
+  if (lives < 1 ) {
+    image(eheart, 0,0,30,30)
+  } else {
+    image(heart, 0,0,30,30)
+  }
+  if (lives < 2 ) {
+    image(eheart, 29,0,30,30)
+  } else {
+    image(heart, 29,0,30,30)
+  }
+  if (lives < 3 ) {
+    image(eheart, 58,0,30,30)
+  } else {
+    image(heart, 58,0,30,30)
+  }
+  if (lives < 4 ) {
+    image(eheart, 88,0,30,30)
+  } else {
+    image(heart, 88,0,30,30)
+  }
+  if (lives < 5 ) {
+    image(eheart, 118,0,30,30)
+  } else {
+    image(heart, 118,0,30,30)
+  }
+
 }
 
 function clear(){
