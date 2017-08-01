@@ -3,25 +3,25 @@ var y = 0;
 var gb;
 var person;
 var rc;
-
 var logo;
 var jumps = 0;
-
 var score = 0;
 var recentColl = false;
 var money = 0.00;
 var plasticBottle;
 var monospace;
+var lost = false;
 
 
 function preload() {
   logo = loadImage("logo.png");
   bg = loadImage("city-background.jpg");
   instructions = loadImage("instructions.png");
-  plasticBottle = loadImage("plastic-water-bottle.jpg");
+  plasticBottle = loadImage("waterbottle.png");
   sc = loadImage("girl.png");
   rc = loadImage("Recycling_Plant.png")
   plasticBottle = loadImage("waterbottle.png");
+  lose = loadImage("losescreen.png");
 }
 
 function keyPressed() {
@@ -49,7 +49,8 @@ function draw() {
   }
   else if (millis()<=6000) {
     image(instructions,0,0,845,350);
-  } else {
+  }
+  else {
     drawBackground(offset-=2);
     if (offset<=-width){
         offset=0;
@@ -57,21 +58,26 @@ function draw() {
     if (millis()>100000){
       image(rc, 400, height/2, rc.width/4, rc.height/4);
     }
+    if (collideRectRect(400, (height-50), 50, 50,person.pos.x, person.pos.y, 42, 132)) {
+      image(lose,0,0,845,350);
+      return;
+    }
     dis_money();
     bottleCount();
     disBottle();
     makeBottle();
+    makeBottlefloat();
     translate(-person.pos.x+50, 0);
     var gravity = createVector(0, 0.1);
     person.applyForce(gravity);
     if (person.pos.y == 350) {
       jumps =0;
+
     }
 
     person.update();
     person.edges();
     person.display(sc);
-
     fill(255, 0, 100);
     rect(400, height-50, 50, 50);
     rect(800, height-50, 50, 50);
@@ -129,8 +135,14 @@ function moneyCount() {
   }
 }
 
+
+
 function makeBottle() {
    image(plasticBottle, 480, 0, 18, 58);
+}
+
+function makeBottlefloat() {
+  image(plasticBottle, 480, 240, 25, 65);
 }
 
 function disBottle() {
