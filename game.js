@@ -73,9 +73,9 @@ function draw() {
     showLives();
     translate(-person.pos.x+50, 0);
 
-    if (millis()>60000){
-      image(rc, 6000, height/2, rc.width/4, rc.height/4);
-    }
+
+    image(rc, 6000, height/2, rc.width/4, rc.height/4);
+
 
     var gravity = createVector(0, 0.1);
     person.applyForce(gravity);
