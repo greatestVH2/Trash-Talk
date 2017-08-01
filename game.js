@@ -50,7 +50,7 @@ function keyPressed() {
 function setup() {
   offset =0;
   createCanvas(839, 350);
-  person = new Person();
+   person = new Person();
 
 }
 
@@ -81,6 +81,11 @@ function draw() {
     makeBottlefloat();
     showLives();
     translate(-person.pos.x+50, 0);
+
+
+    image(rc, 6000, height/2, rc.width/4, rc.height/4);
+
+
     var gravity = createVector(0, 0.1);
     person.applyForce(gravity);
     if (person.pos.y == 350) {
@@ -88,9 +93,9 @@ function draw() {
 
     }
 
-    person.update();
-    person.edges();
-    person.display(sc);
+     person.update();
+     person.edges();
+     person.display(sc);
 
 
     display_obstacles();
