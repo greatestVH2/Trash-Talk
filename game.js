@@ -13,6 +13,10 @@ var money = 0.00;
 var plasticBottle;
 var monospace;
 
+// obst = {'cat-call1.png': (90,40);
+//
+//  }
+
 
 function preload() {
   logo = loadImage("logo.png");
@@ -20,9 +24,6 @@ function preload() {
   sc = loadImage("girl.png");
   rc = loadImage("Recycling_Plant.png")
   plasticBottle = loadImage("waterbottle.png");
-
-
-
 }
 
 function keyPressed() {
@@ -60,7 +61,6 @@ function draw() {
     dis_money();
     bottleCount();
     disBottle();
-    //bottle_score();
     makeBottle();
     translate(-person.pos.x+50, 0);
     var gravity = createVector(0, 0.1);
@@ -72,7 +72,6 @@ function draw() {
     person.update();
     person.edges();
     person.display(sc);
-
     fill(255, 0, 100);
     rect(400, height-50, 50, 50);
     rect(800, height-50, 50, 50);
@@ -83,13 +82,11 @@ function draw() {
 function clear(){
     background ("white");
 }
-function recycling(){
-
-}
 
 function drawBackground(offset){
     image(bg, offset, -140);
-    image(bg, offset+width, -140);
+    var i = image(bg, offset+width, -140);
+    console.log(i.x);
 }
 
 function dis_money() {
@@ -107,7 +104,7 @@ function dis_money() {
 
 function bottleCount() {
   console.log(score);
-  if (collideRectRect(400, (height-50), 50, 50,person.pos.x, person.pos.y, 42, 132)) {
+  if (collideRectRect(person.pos.x, person.pos.y-65, 45, 65, 400, height-50, 50, 50) ){
     if (recentColl == false){
       recentColl = true;
       console.log(recentColl)
@@ -120,7 +117,7 @@ function bottleCount() {
 
 function moneyCount() {
   console.log(score);
-  if (collideRectRect(400, (height-50), 50, 50,person.pos.x, person.pos.y, 42, 132)) {
+  if (collideRectRect(person.pos.x, person.pos.y-65, 45, 65, 400, (height-50), 50, 50)) {
     if (recentColl == false){
       recentColl = true;
       console.log(recentColl)
@@ -131,7 +128,7 @@ function moneyCount() {
 }
 
 function makeBottle() {
-   image(plasticBottle, 480, 0, 18, 58);
+   image(plasticBottle, 480, 0, 15, 58);
 }
 
 function disBottle() {
