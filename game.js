@@ -14,6 +14,7 @@ var money = 0.00;
 var plasticBottle;
 var monospace;
 
+var lives = 5;
 var heart ;
 var eheart;
 var offset;
