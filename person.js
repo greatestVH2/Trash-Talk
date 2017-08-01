@@ -15,8 +15,8 @@ function Person() {
 
 
   this.display = function(img) {
-    fill(255);
-    stroke(255);
+    //fill(255);
+    //stroke(255);
     //image(img, this.pos.x, this.pos.y);
 
     image(img, this.pos.x, this.pos.y-60);
